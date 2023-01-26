@@ -1,6 +1,10 @@
 package video;
 
 import org.bytedeco.javacv.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class VideoConverter extends Video{
     public VideoConverter(String pathOrigVideo, boolean progressBar) {
@@ -45,6 +49,27 @@ public class VideoConverter extends Video{
 
         recorder.close();
         grabber.close();
+    }
 
+
+
+    public void create(String path, String format) throws IOException {
+        BufferedImage image = ImageIO.read(new File(getPathOrigVideo()));
+
+        FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(path, image.getWidth(), image.getHeight());
+        recorder.setFrameRate(30);
+        recorder.setFormat(format);
+        recorder.start();
+
+        progressBar.setMaximum(60);
+        for (int i = 0; i != 60; i++) {
+            Frame frame = new Java2DFrameConverter().convert(image);
+            image = ImageIO.read(new File(getPathOrigVideo()));
+            recorder.record(frame);
+            progressBar.setValue(i);
+        }
+
+        Video.closeProgressBar();
+        recorder.close();
     }
 }
