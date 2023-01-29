@@ -17,7 +17,6 @@ public class VideoFrame extends Video{
     }
 
     public BufferedImage getImage(int second) {
-        progressBar.setMaximum(2);
 
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(getPathOrigVideo());
         Frame frame;
@@ -26,13 +25,11 @@ public class VideoFrame extends Video{
             grabber.start();
             int frameNumber = (int) (grabber.getFrameRate() * second);
 
-            progressBar.setValue(1);
 
             grabber.setFrameNumber(frameNumber);
             frame = grabber.grabImage();
             grabber.close();
 
-            progressBar.setValue(2);
             Video.closeProgressBar();
         } catch (FrameGrabber.Exception e) {
             Video.closeProgressBar();

@@ -7,7 +7,7 @@ public class Video {
     public static String TEMP_PATH = "";
     private final String pathOrigVideo;
     private static JFrame jFrame;
-    protected static JProgressBar progressBar = new JProgressBar();
+    private static JProgressBar progressBar;
 
     public Video(String pathOrigVideo) {
         this.pathOrigVideo = pathOrigVideo;
@@ -26,8 +26,17 @@ public class Video {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
         jFrame.setSize(900,200);
+        progressBar = new JProgressBar();
 
         jFrame.add(progressBar);
+    }
+    protected static void setProgress(int progress) {
+        if (progressBar != null)
+            progressBar.setValue(progress);
+    }
+    protected static void setProgressMax(int max) {
+        if (progressBar != null)
+            progressBar.setMaximum(max);
     }
 
     public static void closeProgressBar() {
