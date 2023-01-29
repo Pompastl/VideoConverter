@@ -3,27 +3,26 @@ package video;
 import javax.swing.*;
 
 public class Video {
-    private String pathOrigVideo;
+    public static String DOWNLOAD_PATH = "";
+    public static String TEMP_PATH = "";
+    private final String pathOrigVideo;
     private static JFrame jFrame;
     protected static JProgressBar progressBar = new JProgressBar();
 
-
-
-    public Video(boolean progressBar) {
-        if (progressBar)
-            openProgressBar();
+    public Video(String pathOrigVideo) {
+        this.pathOrigVideo = pathOrigVideo;
     }
 
     public Video(String pathOrigVideo, boolean progressBar) {
         this.pathOrigVideo = pathOrigVideo;
 
         if (progressBar)
-            openProgressBar();
+            openProgressBar(pathOrigVideo);
     }
 
 
-    private static void openProgressBar() {
-        jFrame = new JFrame("loading...");
+    private static void openProgressBar(String text) {
+        jFrame = new JFrame(text);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
         jFrame.setSize(900,200);
@@ -39,7 +38,11 @@ public class Video {
         return pathOrigVideo;
     }
 
-    public void setPathOrigVideo(String pathOrigVideo) {
-        this.pathOrigVideo = pathOrigVideo;
+    public static void setDownloadPath(String downloadPath) {
+        DOWNLOAD_PATH = downloadPath;
+    }
+
+    public static void setTempPath(String tempPath) {
+        TEMP_PATH = tempPath;
     }
 }
