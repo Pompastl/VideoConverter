@@ -14,6 +14,7 @@ public class Storyboard extends VideoFrame {
 
     /**
      * This method returns the frame corresponding to the given <b>second</b>
+     * @see Storyboard#getFrames(int, int)
      */
     public Frame getFrame(int second) {
 

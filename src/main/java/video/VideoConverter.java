@@ -51,7 +51,7 @@ public class VideoConverter extends Video{
         
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(getPathOrigVideo());
         grabber.start();
-        boolean hasAudio = grabber.getAudioChannels() > 0;
+        boolean hasAudio = grabber.getAudioChannels() > 0 && !( format.contains("webm") || format.contains("gif") );
         
         FrameRecorder recorder = new FFmpegFrameRecorder(path, x[0], x[1]);
         recorder.setFrameRate(grabber.getFrameRate());
