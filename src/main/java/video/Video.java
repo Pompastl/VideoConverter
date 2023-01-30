@@ -1,9 +1,10 @@
 package video;
 
 import javax.swing.*;
+import java.io.File;
 
 public class Video {
-    public static String DOWNLOAD_PATH = "";
+    public final static String DOWNLOAD_PATH = System.getProperty("user.home") + File.separator + "Downloads" + File.separator;
     public static String TEMP_PATH = "";
     private final String pathOrigVideo;
     private static JFrame jFrame;
@@ -13,6 +14,10 @@ public class Video {
         this.pathOrigVideo = pathOrigVideo;
     }
 
+    /**
+     * Input parameter: string indicating the path to the original video<br><br>
+     * Boolean progressBar indicates: will the download progress be <b>graphically</b> displayed
+     */
     public Video(String pathOrigVideo, boolean progressBar) {
         this.pathOrigVideo = pathOrigVideo;
 
@@ -47,9 +52,6 @@ public class Video {
         return pathOrigVideo;
     }
 
-    public static void setDownloadPath(String downloadPath) {
-        DOWNLOAD_PATH = downloadPath;
-    }
 
     public static void setTempPath(String tempPath) {
         TEMP_PATH = tempPath;
