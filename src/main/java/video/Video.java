@@ -45,7 +45,8 @@ public class Video {
     }
 
     public static void closeProgressBar() {
-        jFrame.dispose();
+        if (jFrame != null)
+            jFrame.dispose();
     }
 
     public String getPathOrigVideo() {
