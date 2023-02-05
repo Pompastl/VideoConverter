@@ -2,7 +2,7 @@
 this program uses the opencv 1.5.8 library
 
 use case:
-`
+```java
 import org.bytedeco.javacv.FrameGrabber;
 import org.bytedeco.javacv.FrameRecorder;
 import video.VideoConverter;
@@ -13,5 +13,4 @@ public class Main {
         converter.converter("dsa.mov", ".mov");
     }
 }
-
-`
+```
