@@ -14,3 +14,7 @@ public class Main {
     }
 }
 ```
+## Libraries
+JavaCV 
+https://github.com/bytedeco/javacv
+
